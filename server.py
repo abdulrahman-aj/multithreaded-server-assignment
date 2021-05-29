@@ -1,6 +1,5 @@
 import socket
 import threading
-import json
 import sys
 from buffered_socket import BufferedSocket
 
