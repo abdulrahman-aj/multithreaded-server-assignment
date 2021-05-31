@@ -29,6 +29,9 @@ class BufferedSocket:
         header = f"{len(msg):0{BufferedSocket.HEADER_SIZE}}".encode("utf-8")
         self.sock.send(header + msg)
 
+    def settimeout(self, timeout: float):
+        self.sock.settimeout(timeout)
+
     def recv(self) -> bytes:
         msg_length = b""
         while len(msg_length) < BufferedSocket.HEADER_SIZE:
