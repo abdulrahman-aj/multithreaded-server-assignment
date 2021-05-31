@@ -2,7 +2,7 @@ import socket
 
 
 class BufferedSocket:
-    """Wrapper class, delegates all calls to standard socket, handles buffering""""
+    """Wrapper class, delegates all calls to standard socket, handles buffering"""
     HEADER_SIZE = 10
     BUFFER_SIZE = 2048
 
