@@ -3,7 +3,7 @@ import socket
 
 class BufferedSocket:
     HEADER_SIZE = 10
-    BUFFER_SIZE = 1024
+    BUFFER_SIZE = 2048
 
     def __init__(self, family=socket.AF_INET, conn_type=socket.SOCK_STREAM, orig=None):
         if orig:
@@ -27,9 +27,7 @@ class BufferedSocket:
 
     def send(self, msg: bytes):
         header = f"{len(msg):0{BufferedSocket.HEADER_SIZE}}".encode("utf-8")
-
-        msg = header + msg
-        self.sock.send(msg)
+        self.sock.send(header + msg)
 
     def recv(self) -> bytes:
         msg_length = b""
