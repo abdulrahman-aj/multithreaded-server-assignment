@@ -7,6 +7,7 @@ from buffered_socket import BufferedSocket
 class Listener:
 
     def __init__(self, host, port, client_handler):
+        """init server socket, bind on (host, port)"""
         self.host = host
         self.port = port
         self.cliend_handler = client_handler
@@ -15,17 +16,15 @@ class Listener:
         self.running = False
 
     def listen(self):
-        print("Server listening on {}:{}...".format(self.host, self.port))
+        """start listening for clients"""
         self.sock.listen()
         self.running = True
         while self.running:
             conn, addr = self.sock.accept()
-            print(f"Connection from {addr[0]}:{addr[1]} established!",
-                  file=sys.stderr)
-
-            t = threading.Thread(target=self.cliend_handler, args=[conn, addr])
+            t = threading.Thread(target=self.cliend_handler, args=[conn, addr, lambda: self.running])
             t.start()
 
     def close(self):
+        """free resources"""
         self.running = False
         self.sock.close()

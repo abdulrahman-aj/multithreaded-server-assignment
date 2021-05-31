@@ -8,10 +8,12 @@ class Matrix:
 
     @staticmethod
     def __flatten(matrix):
+        """Helper"""
         return [x for row in matrix for x in row]
 
     @staticmethod
     def __deflatten(matrix):
+        """Helper"""
         ret = []
         for i in range(Matrix.N):
             row = []
