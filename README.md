@@ -1,4 +1,4 @@
-# Multithreaded Server ASsignment
+# Multithreaded Server Assignment
 ### Name: Abdulrahman Ajlouni.
 ### ID: 133571.
 
